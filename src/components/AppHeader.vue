@@ -1,8 +1,9 @@
 <script setup>
 import { ref } from 'vue'
-import { useI18n, applyLocale } from '../i18n'
+import { useI18n } from '../i18n'
+import LanguageMenu from './LanguageMenu.vue'
 
-const { locale, t } = useI18n()
+const { t } = useI18n()
 const open = ref(false)
 
 const links = [
@@ -11,10 +12,6 @@ const links = [
   { name: 'help', labelKey: 'navHelp' },
   { name: 'contact', labelKey: 'navContact' },
 ]
-
-function toggleLang() {
-  applyLocale(locale.value === 'eng' ? 'rus' : 'eng')
-}
 </script>
 
 <template>
@@ -34,26 +31,14 @@ function toggleLang() {
         >
           {{ t[link.labelKey] }}
         </router-link>
-        <button
-          type="button"
-          class="rounded-lg border border-white/10 px-2.5 py-1 text-xs font-semibold text-brand-soft"
-          @click="toggleLang"
-        >
-          {{ locale === 'eng' ? 'RU' : 'EN' }}
-        </button>
+        <LanguageMenu />
       </nav>
 
       <div class="flex items-center gap-2 md:hidden">
+        <LanguageMenu />
         <button
           type="button"
-          class="rounded-lg border border-white/10 px-2.5 py-1 text-xs font-semibold text-brand-soft"
-          @click="toggleLang"
-        >
-          {{ locale === 'eng' ? 'RU' : 'EN' }}
-        </button>
-        <button
-          type="button"
-          class="rounded-lg border border-white/10 px-3 py-1.5 text-sm text-white"
+          class="rounded-xl border border-white/10 px-3 py-1.5 text-sm text-white"
           :aria-expanded="open"
           @click="open = !open"
         >

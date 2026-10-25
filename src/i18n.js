@@ -1,5 +1,10 @@
 import { computed, ref } from 'vue'
 
+export const locales = [
+  { code: 'eng', label: 'English', flag: '🇬🇧' },
+  { code: 'rus', label: 'Русский', flag: '🇷🇺' },
+]
+
 const messages = {
   eng: {
     htmlLang: 'en',
